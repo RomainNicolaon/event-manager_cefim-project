@@ -17,15 +17,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="add_event.php">Ajouter un event</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="signin.php">S'inscrire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link underline" href="login.php">Se connecter</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Se déconnecter</a>
-                    </li>
+                    <?php if (!BaseUsers::getUser()) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="signin.php">S'inscrire</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link underline" href="login.php">Se connecter</a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Se déconnecter</a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
