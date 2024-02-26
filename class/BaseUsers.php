@@ -115,6 +115,7 @@
             $password = password_hash($password, PASSWORD_BCRYPT);
             $token = bin2hex(random_bytes(16));
             $date = date('Y-m-d', strtotime('+1 month'));
+            $null_date = null;
 
             $stmt = $db->prepare("INSERT INTO users (email, password, token, subscription_type, end_subscription_date) VALUES (:email, :password, :token, :subscription_type, :end_subscription_date)");
             $stmt->bindParam("email", $email);
@@ -124,7 +125,7 @@
             if ($subscription_type === 'premium' || $subscription_type === 'vip') {
                 $stmt->bindParam("end_subscription_date", $date);
             } else {
-                $stmt->bindParam("end_subscription_date", null);
+                $stmt->bindParam("end_subscription_date", $null_date);
             }
             $stmt->execute();
             $db->destroy();
