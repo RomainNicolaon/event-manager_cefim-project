@@ -90,7 +90,11 @@
                 echo "<tbody>";
 
                 if (empty($events)) {
-                    echo "<tr><td colspan='7' class='text-center'>Aucun événement à venir.</td></tr>";
+                    if ($user instanceof AdminUsers) {
+                        echo "<tr><td colspan='7' class='text-center'>Aucun événement à venir.</td></tr>";
+                    } else {
+                        echo "<tr><td colspan='6' class='text-center'>Aucun événement à venir.</td></tr>";
+                    }
                 } else {
                     foreach ($events as $event) {
                         $event_obj = Event::getEventById($event['id']);

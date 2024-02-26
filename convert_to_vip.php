@@ -11,6 +11,7 @@
             $user->convertToClientVIP();
 
             $_SESSION['user'] = $user;
+            $_SESSION['subscription_type'] = "vip";
             $_SESSION['message'] .= " Votre compte a été converti en compte VIP";
         } else {
             $_SESSION['error'] = "Déjà VIP !";
