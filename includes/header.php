@@ -37,7 +37,6 @@
 
 <script>
     const page_name = document.title;
-    console.log(page_name);
     const nav_links = document.querySelectorAll('.nav-link');
 
     nav_links.forEach(link => {

@@ -2,8 +2,9 @@
     spl_autoload_register(function ($class_name) {
         require $class_name . '.php';
     });
-    
+
     class StandardUsers extends BaseUsers {
+        use ConvertToClientVIPTrait;
         public const REDUCTION = 1;
 
         public function __construct(
@@ -17,10 +18,4 @@
         public function afficheMessageAccueil(): void {
             echo "Bonjour simple client...".PHP_EOL;
         }
-
-        public function convertToClientVIP(): VIPUsers {
-            parent::updateUser($this->getUserMail(), $this->getUserPassword(), 'vip');
-            return new VIPUsers($this->getUserMail(), $this->getUserPassword(), $this->getDateFinAbonnement());
-        }
-        
     }

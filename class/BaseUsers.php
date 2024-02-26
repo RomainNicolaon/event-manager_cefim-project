@@ -232,11 +232,12 @@
         }
 
         public function __toString(): string {
+            $reduction = static::REDUCTION;
             $str = <<<EOT
             <div>
                 <p>Identité : {$this->getUserMail()}</p>
                 <p>Mot de passe : {$this->getUserPassword()}</p>
-                <p>Réduction : {$this->reduction} €</p>
+                <p>Réduction : {$reduction}</p>
             </div>
             <hr>
             EOT;

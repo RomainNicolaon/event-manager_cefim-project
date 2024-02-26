@@ -2,8 +2,9 @@
     spl_autoload_register(function ($class_name) {
         require $class_name . '.php';
     });
-
-    class PremiumUsers extends BaseUsers implements ConvertToClientVIPInterface {
+    
+    class PremiumUsers extends BaseUsers {
+        use ConvertToClientVIPTrait;
         public const REDUCTION = 0.5;
 
         public function __construct(
@@ -12,11 +13,6 @@
             protected string $dateFinAbonnement,
         ) {
             parent::__construct($email, $password, self::REDUCTION);
-        }
-
-        public function convertToClientVIP(): VIPUsers {
-            parent::updateUser($this->getUserMail(), $this->getUserPassword(), 'vip');
-            return new VIPUsers($this->getUserMail(), $this->getUserPassword(), $this->getDateFinAbonnement());
         }
 
         public static function getAbonnementReduction(): float {

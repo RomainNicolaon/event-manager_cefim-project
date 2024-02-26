@@ -6,7 +6,7 @@
     });
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,13 +42,15 @@
         $events = Event::getAllEvents(); 
     ?>
 
+    <div id="alert_box"></div>
+
     <main class="container">
         <h1>Accueil</h1>
 
         <p>
             <?php
                 if ($user = BaseUsers::getUser()) {
-                    $user->afficheMessageAccueil();
+                    echo "Bonjour " . $user->getEmail() . "<br>";
 
                     if ($user instanceof PremiumUsers) {
                         echo "Votre réduction est de " . PremiumUsers::getAbonnementReduction() * 100 . "%<br>";
@@ -57,7 +59,7 @@
                     }
 
                     if ($user instanceof PremiumUsers || $user instanceof StandardUsers) {
-                        echo "<a href='convert_to_vip.php' class='btn btn-primary mt-2'>
+                        echo "<br><a href='convert_to_vip.php' class='btn btn-primary mt-2' id='convert_to_vip'>
                         Evoluer vers un compte VIP
                         </a><br>";
                     }
