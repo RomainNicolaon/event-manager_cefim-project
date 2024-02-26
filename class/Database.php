@@ -1,5 +1,5 @@
 <?php
-    require_once("includes/config.php");
+    require_once "includes/config.php";
     
     class Database {
         private static $instance;
@@ -10,10 +10,10 @@
             // Set DSN
             $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME;
             // Set options
-            $options = array(
+            $options = [
                 PDO::ATTR_PERSISTENT => true,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-            );
+            ];
             // Create a new PDO instance
             try {
                 $this->pdo = new PDO($dsn, DB_USER, DB_PASS, $options);

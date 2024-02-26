@@ -90,7 +90,7 @@
                 echo "<tbody>";
 
                 if (empty($events)) {
-                    echo "<tr><td colspan='6' class='text-center'>Aucun événement à venir.</td></tr>";
+                    echo "<tr><td colspan='7' class='text-center'>Aucun événement à venir.</td></tr>";
                 } else {
                     foreach ($events as $event) {
                         $event_obj = Event::getEventById($event['id']);
@@ -103,7 +103,10 @@
                         echo "<td>" . $event_obj->getAvailablePlaces() . "</td>";
                         echo "<td>" . $event_obj->getStatus() . "</td>";
                         if ($user instanceof AdminUsers) {
-                            echo "<td><a href='delete_event.php?id=" . $event_obj->getId() . "' class='btn btn-danger'>Supprimer</a></td>";
+                            echo "<form action='delete_event.php' method='post'>";
+                            echo "<td><input type='hidden' name='id' value='" . $event['id'] . "'>";
+                            echo "<button type='submit' class='btn btn-danger'>Supprimer</button></td>";
+                            echo "</form>";
                         }
                         echo "</tr>";
                     }

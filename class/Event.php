@@ -122,7 +122,7 @@
 
         /**
          * @param int $id
-         * @return object
+         * @return object|bool
          * Get event by id
          * @throws Exception
          * @throws PDOException

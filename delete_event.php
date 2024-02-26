@@ -5,8 +5,8 @@
         require 'class/' . $class_name . '.php';
     });
 
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    if (isset($_POST['id'])) {
+        $id = $_POST['id'];
         $event = Event::getEventById($id);
         if ($event) {
             $event->deleteEvent();
